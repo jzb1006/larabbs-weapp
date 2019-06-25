@@ -32,6 +32,10 @@
                     </view>
                 </view>
             </view>
+            <view class="weui-agree__text">
+                如果你还没有 Larabbs 用户可以
+                <navigator url="/pages/auth/register" class="weui-agree__link">注册新用户</navigator>
+            </view>
             <view class="weui-btn-area">
                 <button class="weui-btn" type="primary" @tap="submit">登录</button>
             </view>
@@ -72,7 +76,6 @@
                     'username': this.username,
                     'password': this.password
                 }
-    
                 try {
                     let authResponse = await api.login(params);
                     if (authResponse.statusCode === 401) {
@@ -85,27 +88,27 @@
                     }
                 } catch (err) {
                     wepy.showModal({
-                        'title':'提示',
-                        'content':'服务器出错'
+                        'title': '提示',
+                        'content': '服务器出错'
                     })
                 }
             },
         }
         //页面打开事件
-            async onShow(){
-               try{
-                   let authResponse = await api.login()
-                   console.log(authResponse);
-                   if(authResponse.statusCode===201){
-                         wepy.navigateBack()
-                   }
-               }catch(err){
-                    console.log(err);
-                   wepy.showModal({
-                        'title':'提示',
-                        'content':'服务器出错'
-                    })
-               }
+        async onShow() {
+            try {
+                let authResponse = await api.login()
+                console.log(authResponse);
+                if (authResponse.statusCode === 201) {
+                    wepy.navigateBack()
+                }
+            } catch (err) {
+                console.log(err);
+                wepy.showModal({
+                    'title': '提示',
+                    'content': '服务器出错'
+                })
             }
+        }
     }
 </script>
