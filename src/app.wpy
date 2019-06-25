@@ -64,7 +64,12 @@
     constructor() {
       super()
       this.use('requestfix')
+      this.use('promisify')
     }
-    onLaunch() {}
+    onLaunch() {
+      wepy.login().then(res => {
+        console.log('login: ', res)
+      })
+    }
   }
 </script>
