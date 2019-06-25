@@ -1,6 +1,6 @@
 <template>
   <view class="container">
-    首页话题列表
+    用户个人中心
   </view>
 </template>
 
